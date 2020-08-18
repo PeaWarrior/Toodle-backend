@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     user = User.find_by(username: username);
     id = user.id
 
-    if (user and user.password == pass)
+    if (user && user.password == pass)
       response = {
         id: id,
         username: username
