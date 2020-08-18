@@ -9,8 +9,9 @@ class ImagesController < ApplicationController
       render json: img
     end
 
+    private
+
     def img_params
       params.require(:image).permit(:user_id, :art)
     end
-
 end
