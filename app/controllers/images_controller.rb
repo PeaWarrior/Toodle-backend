@@ -9,9 +9,15 @@ class ImagesController < ApplicationController
       render json: img
     end
 
+    def update
+      img = Image.find(params[:id])
+      img.update(img_params)
+      render json: img
+    end
+
     private
 
     def img_params
-      params.require(:image).permit(:user_id, :art)
+      params.require(:image).permit(:user_id, :art, :title)
     end
 end
