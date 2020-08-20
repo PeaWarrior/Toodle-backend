@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   post '/signup', to: 'users#signup'
   patch '/images/:id', to: 'images#update'
+  delete '/images/:id', to: 'images#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -15,6 +15,12 @@ class ImagesController < ApplicationController
       render json: img
     end
 
+    def destroy
+      img = Image.find(params[:id])
+      img.destroy
+      render json: {message: "#{img.title} has been deleted."}
+    end
+
     private
 
     def img_params
