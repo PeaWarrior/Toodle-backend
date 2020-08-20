@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       }
       render json: response
     else
-      render json: "wrong username or password", status: 400
+      render json: {errors: "wrong username or password", status: 400}
     end
   end
 
