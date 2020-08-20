@@ -31,16 +31,17 @@ class UsersController < ApplicationController
     username = params[:user][:username];
     pass = params[:user][:password];
     user = User.find_by(username: username);
-    id = user.id
-
+    
     if (user && user.password == pass)
+      id = user.id
       response = {
+        status: 200,
         id: id,
         username: username
       }
       render json: response
     else
-      render json: {errors: "wrong username or password", status: 400}
+      render json: {error: "Invalid username or password", status: 400}
     end
   end
 
@@ -49,12 +50,13 @@ class UsersController < ApplicationController
     if !current_user
       user = User.create(user_params)
       response = {
+        status: 200,
         id: user.id,
         username: user.username
       }
       render json: response
     else
-      render json: "username is taken", status: 400
+      render json: {error: "username is taken", status: 400}
     end
   end
 
